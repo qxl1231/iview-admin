@@ -11,7 +11,7 @@
 # CMD apt-get update; apt-get install -y nodejs; npm install; node /server/server.js
 # # CMD ["/usr/bin/node", "/server/server.js"]
 
-FROM node:argon
+FROM node:8.9.4
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -19,7 +19,8 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
+RUN npm install -g cnpm
+RUN cnpm install
 
 # Bundle app source
 COPY . /usr/src/app
