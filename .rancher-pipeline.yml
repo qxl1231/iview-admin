@@ -1,13 +1,13 @@
 stages:
-- name: compile
+- name: start
   steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: iview-admin
+  - runScriptConfig:
+      image: node:latest
+      shellScript: |
+        npm install -g cnpm
+        cnpm i
+        npm run dev
   when:
-    event:
-      include:
-      - push
+    event: {}
 timeout: 60
 notification: {}
