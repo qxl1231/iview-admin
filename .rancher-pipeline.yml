@@ -1,0 +1,13 @@
+stages:
+- name: compile
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: iview-admin
+  when:
+    event:
+      include:
+      - push
+timeout: 60
+notification: {}
